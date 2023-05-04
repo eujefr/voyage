@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "798004796230",
+    "project_id": "localizacao-381104",
+    "storage_bucket": "localizacao-381104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798004796230:android:0445759d272f40e2bb2347",
+        "android_client_info": {
+          "package_name": "com.voyage.tcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798004796230-ktub0gek5ka5dofeo9tjg0nbb0fn9vln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.voyage.tcc",
+            "certificate_hash": "ed9c497c37b42fc0b1effd383e5c3f9c9dbe4546"
+          }
+        },
+        {
+          "client_id": "798004796230-i2lqelq34e0evlgpogu7p05qdmcjl68u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjQUbWu6VdErro9YSai9s4QVE44sYb1SY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798004796230-i2lqelq34e0evlgpogu7p05qdmcjl68u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
