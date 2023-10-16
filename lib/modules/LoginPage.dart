@@ -6,6 +6,7 @@ import 'package:tcc/service/Authentication.dart';
 import 'package:tcc/shared/LocalStorage.dart';
 
 import '../shared/Request.dart';
+import '../shared/ResponseRequest.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -93,13 +94,13 @@ class _LoginPageState extends State<LoginPage> {
 
         await Authentication.signIn(acountUser);
 
-        String dadosUsuario = await Requests.getUsingToken(
+        ResponseRequest dadosUsuario = await Requests.getUsingToken(
             "${Requests.hostApi}user/userEmail?dsEmailUser=${acountUser.email}");
 
-        if (dadosUsuario.isNotEmpty) {
+        if (dadosUsuario.body.isNotEmpty) {
 
           await LocalStorage.getInstance()
-              .then((value) => value.setString("User", dadosUsuario));
+              .then((value) => value.setString("User", dadosUsuario.body));
 
           Navigator.pushReplacement(
               context,

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:tcc/models/User.dart';
 import 'package:tcc/modules/CreatePost.dart';
+import 'package:tcc/modules/PerfilUser.dart';
 import 'package:tcc/modules/ProdutosReservaPage.dart';
 import 'package:tcc/service/PostService.dart';
 import 'package:tcc/shared/LocalStorage.dart';
@@ -23,6 +24,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   final RefreshController _refreshController = RefreshController(initialRefresh: true);
+  late User user;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,8 @@ class _DashboardState extends State<Dashboard> {
       future: LocalStorage.getUser(),
       builder: (context, snapshot) {
         if (snapshot.data != null) {
-          User? user = snapshot.data;
+
+          user = snapshot.data!;
 
           if (user != null) {
             return Scaffold(
@@ -45,7 +48,10 @@ class _DashboardState extends State<Dashboard> {
                   Padding(
                     padding: const EdgeInsets.only(right: 10, bottom: 2),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilUser(),));
+                      },
                       child: ClipOval(
                         child: Image.network(user.dsImgUser),
                       ),
@@ -146,7 +152,8 @@ class _DashboardState extends State<Dashboard> {
                           if (post.containsProduto) {
 
                             Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => ProdutosReservaPage(idPost: post.idPost)));
+                                MaterialPageRoute(builder: (context) => ProdutosReservaPage(idPost: post.idPost,
+                                idUserPost: post.user.idUser, user: user,)));
                           }
 
                         },
@@ -157,7 +164,6 @@ class _DashboardState extends State<Dashboard> {
             );
           }
         }
-
         return const Center(
           child: CircularProgressIndicator(),
         );

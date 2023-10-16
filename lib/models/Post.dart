@@ -17,7 +17,7 @@ class Post {
     for (var json in listJson) {
 
       post.add(Post(json['idPost'], json['dsPost'], json['dsImgPost'],
-          User.fromJson(json['userDTO']), json['containsProduto']));
+          User.fromJson(json['user']), json['containsProduto']));
     }
 
     return post;

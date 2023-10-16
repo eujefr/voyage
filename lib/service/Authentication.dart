@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tcc/shared/LocalStorage.dart';
 
 import '../shared/Request.dart';
+import '../shared/ResponseRequest.dart';
 
 class Authentication {
 
@@ -16,7 +17,7 @@ class Authentication {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken);
 
-    await LocalStorage.setToken(await getToken(googleAuth?.idToken));
+    await LocalStorage.setToken((await getToken(googleAuth?.idToken)).body);
 
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
@@ -30,7 +31,7 @@ class Authentication {
     return googleUser;
   }
 
-  static Future<String> getToken(idTokenGoogle) async {
+  static Future<ResponseRequest> getToken(idTokenGoogle) async {
 
     return await Requests.post(Requests.hostApi+Requests.endpointAuthToken,
         jsonEncode(<String, String>{

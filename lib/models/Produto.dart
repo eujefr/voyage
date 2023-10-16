@@ -1,13 +1,15 @@
 
 class Produto {
 
+  late int idProduto;
   late String dsProduto;
-  late double vlProduto;
+  late String vlProduto;
 
-  Produto(this.dsProduto, this.vlProduto);
+  Produto({this.idProduto = 0, required this.dsProduto, required this.vlProduto});
 
   Map<String, dynamic> toJson() =>
       {
+        "idProduto" : idProduto,
         "dsProduto" : dsProduto,
         "vlProduto" : vlProduto
       };
@@ -18,7 +20,7 @@ class Produto {
 
     for (var json in listJson) {
 
-      produto.add(Produto(json["dsProduto"], json["vlProduto"]));
+      produto.add(Produto(idProduto: json["idProduto"], dsProduto: json["dsProduto"], vlProduto: json["vlProduto"]));
     }
 
     return produto;

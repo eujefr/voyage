@@ -113,13 +113,13 @@ class _CreatePostState extends State<CreatePost> {
 
                             String valueProduto = controllerValueProduto[index].value
                                 .text.replaceAll("R\$ ", "").replaceAll(",", "");
-                            json['produto'].add(Produto(element.value.text,
-                                double.parse(valueProduto)).toJson());
+                            json['produto'].add(Produto(dsProduto: element.value.text,
+                                vlProduto: valueProduto).toJson());
 
                           });
 
-                          String response = await Requests.post('${Requests.hostApi}post/save',
-                              jsonEncode(json));
+                          String response = (await Requests.post('${Requests.hostApi}post/save',
+                              jsonEncode(json))).body;
 
                           if (response.isNotEmpty) {
 
